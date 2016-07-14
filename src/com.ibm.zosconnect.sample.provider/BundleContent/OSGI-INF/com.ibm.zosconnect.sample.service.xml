@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.osgi.org/xmlns/scr/v1.2.0" activate="activate" configuration-policy="require" deactivate="deactivate" immediate="true" modified="modified" name="referenceService" configuration-pid="com.ibm.zosconnect.sample.provider">
+  <implementation class="com.ibm.zosconnect.sample.provider.SampleServiceProvider"/>
+  <service>
+     <provide interface="com.ibm.zosconnect.spi.Service"/>
+  </service>
+  <property name="service.vendor" type="String" value="IBM"/>
+  <property name="service.product" type="String" value="zOSConnect"/>
+  <property name="service.ranking" type="String" value="1"/>
+</component>

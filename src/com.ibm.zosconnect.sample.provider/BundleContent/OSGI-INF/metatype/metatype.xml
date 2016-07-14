@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.1.0"  
+                   xmlns:ibm="http://www.ibm.com/xmlns/appservers/osgi/metatype/v1.0.0"
+                   localization="OSGI-INF/l10n/metatype">
+
+    <OCD id="com.ibm.zosconnect.sample.provider" ibm:alias="sampleService" name="sampleService" description="zOSConnect EE Sample ServiceProvider">
+        <AD id="com.ibm.zosconnect.serviceType" required="false" type="String" ibm:final="true" name="internal" description="serviceType"/>
+        <AD id="timezone" required="false" type="String" default="" name="timezone" description="The timezone the service will run in" />
+    </OCD>
+
+    <Designate factoryPid="com.ibm.zosconnect.sample.provider">
+        <Object ocdref="com.ibm.zosconnect.sample.provider" />
+    </Designate>
+</metatype:MetaData>
