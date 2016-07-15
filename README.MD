@@ -1,6 +1,6 @@
 ## Sample z/OS Connect Enterprise Edition Service Provider
 
-A z/OS Connect Enterprise Edition (EE) Service Provider which demonstrates how to build an
+A z/OS Connect Enterprise Edition (EE) Service Provider which demonstrates how to build a
 service provider and include it as part of a z/OS Connect EE configuration.
 
 ### Installing
