@@ -3,8 +3,7 @@
                    xmlns:ibm="http://www.ibm.com/xmlns/appservers/osgi/metatype/v1.0.0"
                    localization="OSGI-INF/l10n/metatype">
 
-    <OCD id="com.ibm.zosconnect.sample.provider" ibm:alias="sampleService" name="sampleService" description="zOSConnect EE Sample ServiceProvider">
-        <AD id="com.ibm.zosconnect.serviceType" required="false" type="String" ibm:final="true" name="internal" description="serviceType"/>
+    <OCD id="com.ibm.zosconnect.sample.provider" ibm:alias="sampleService" name="sampleService" description="zOSConnect EE Sample ServiceProvider" ibm:objectClass="com.ibm.zosconnect.serviceType">
         <AD id="timezone" required="false" type="String" default="" name="timezone" description="The timezone the service will run in" />
     </OCD>
 
