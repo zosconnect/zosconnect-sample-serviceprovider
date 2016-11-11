@@ -3,9 +3,16 @@
 A z/OS Connect Enterprise Edition (EE) Service Provider which demonstrates how to build a
 service provider and include it as part of a z/OS Connect EE configuration.
 
+### Pre-reqs
+
+* Liberty installed locally [wasdev.net]()
+* The z/OS Connect EE SPI JAR file downloaded from a z/OS Connect EE install.
+
 ### Installing
 
 * Clone this repository `git clone git://github.com/zosconnect/zosconnect-sample-provider.git`
+* Update `build.xml` to point to the location of your Liberty install and the SPI jar.
+* Build the feature `ant build.xml`
 * Install the feature into your z/OS Connect EE environment `wlp/bin/featureManager install com.ibm.zosconnect.sample.provider.feature-1.0.0.0.esa`
 
 ### Configuring
