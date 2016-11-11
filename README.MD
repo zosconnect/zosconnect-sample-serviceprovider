@@ -5,7 +5,7 @@ service provider and include it as part of a z/OS Connect EE configuration.
 
 ### Pre-reqs
 
-* Liberty installed locally [wasdev.net]()
+* [WebSphere Liberty](http://wasdev.net) installed locally
 * The z/OS Connect EE SPI JAR file downloaded from a z/OS Connect EE install.
 
 ### Installing
