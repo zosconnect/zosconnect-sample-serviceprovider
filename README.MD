@@ -13,7 +13,9 @@ service provider and include it as part of a z/OS Connect EE configuration.
 * Clone this repository `git clone git://github.com/zosconnect/zosconnect-sample-provider.git`
 * Update `build.xml` to point to the location of your Liberty install and the SPI jar.
 * Build the feature `ant build.xml`
-* Install the feature into your z/OS Connect EE environment `wlp/bin/featureManager install com.ibm.zosconnect.sample.provider.feature-1.0.0.0.esa`
+* Transfer the esa file to the mainframe. If using `ftp` ensure the file is transferred as binary.
+* Install the feature into your z/OS Connect EE environment `wlp/bin/installUtility install com.ibm.zosconnect.sample.provider.feature-1.0.0.0.esa --to=usr`
+   * If using the default location for z/OS Connect EE servers then set the environment variable `WLP_USER_DIR=/var/zosconnect`
 
 ### Configuring
 
@@ -27,6 +29,17 @@ service provider and include it as part of a z/OS Connect EE configuration.
                            serviceRef="dateService" serviceDescription="">
 </zosconnect_zosConnectService>
 <usr_sampleService id="dateService" timezone="GMT"/>
+```
+
+### Testing
+
+* Start the server
+* Verify the service has been installed by doing an HTTP GET to `https://host:port/zosConnect/services`
+* Invoke the service by sending an HTTP PUT to `https://host:port/zosConnect/services/sampleService?action=invoke` with a payload of
+```
+{
+    'input': 'test'
+}
 ```
 
 ### Updating
