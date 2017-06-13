@@ -23,13 +23,16 @@ service provider and include it as part of a z/OS Connect EE configuration.
 ```
 <feature>usr:sampleProvider</feature>
 ```
-* Create an service definition
+* Create a service definition
 ```
 <zosconnect_zosConnectService id="sampleService" serviceName="sampleService"
                            serviceRef="dateService" serviceDescription="">
 </zosconnect_zosConnectService>
 <usr_sampleService id="dateService" timezone="GMT"/>
 ```
+
+Alternatively a SAR file built using the [sample Build Toolkit plugin](https://github.com/zosconnect/zosconnect-sample-buildtoolkit-plugin) can be placed in the services directory
+to install the service.
 
 ### Testing
 

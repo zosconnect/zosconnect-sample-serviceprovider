@@ -4,7 +4,8 @@ Bundle-Name: com.ibm.zosconnect.sample.provider
 Bundle-SymbolicName: com.ibm.zosconnect.sample.provider
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Service-Component: OSGI-INF/com.ibm.zosconnect.sample.service.xml
+Service-Component: OSGI-INF/com.ibm.zosconnect.sample.service.xml,
+ OSGI-INF/com.ibm.zosconnect.sample.servicefactory.xml
 Import-Package: com.ibm.json.java,
  com.ibm.zosconnect.spi,
  org.osgi.framework,

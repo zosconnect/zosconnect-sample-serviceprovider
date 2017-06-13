@@ -1,5 +1,5 @@
 /*
- Copyright IBM Corporation 2016
+ Copyright IBM Corporation 2016, 2017
  
  LICENSE: Apache License
           Version 2.0, January 2004
@@ -28,11 +28,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.osgi.service.component.ComponentContext;
 
 import com.ibm.json.java.JSONObject;
+import com.ibm.zosconnect.spi.DataXform;
 import com.ibm.zosconnect.spi.HttpZosConnectRequest;
+import com.ibm.zosconnect.spi.Interceptor;
 import com.ibm.zosconnect.spi.RequestData;
 import com.ibm.zosconnect.spi.ResponseData;
 import com.ibm.zosconnect.spi.Service;
 import com.ibm.zosconnect.spi.ServiceArchiveData;
+import com.ibm.zosconnect.spi.ServiceController;
 import com.ibm.zosconnect.spi.ServiceException;
 import com.ibm.zosconnect.spi.ServiceStatus;
 
@@ -46,8 +49,7 @@ public class SampleServiceProvider implements Service {
 	private AtomicInteger requestData = new AtomicInteger(0);
 	
 	//Format the date time is returned in
-	private SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-
+	protected SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
 	
 	/**
 	 * Called when the service is created, the configuration from server.xml is
@@ -191,5 +193,4 @@ public class SampleServiceProvider implements Service {
 		// at runtime so return null here.
 		return null;
 	}
-
 }
