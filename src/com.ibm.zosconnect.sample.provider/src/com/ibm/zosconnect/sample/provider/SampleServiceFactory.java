@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.ComponentContext;
 
@@ -52,7 +51,7 @@ public class SampleServiceFactory implements ServiceFactory {
 	@Override
 	public void registerService(SarFile sarFile, Properties properties) throws ServiceFactoryException {
 		String timeZone = (String)sarFile.getProperties().get("timezone");
-		SarSampleService service = new SarSampleService(timeZone);
+		SarSampleService service = new SarSampleService(timeZone, sarFile.getRequestSchema(), sarFile.getResponseSchema());
 		Dictionary<String, Object> serviceProps = new Hashtable<>();
 		serviceProps.put(ServiceControllerConstants.SERVICE_NAME, sarFile.getName());
 		serviceProps.put(ServiceControllerConstants.SERVICE_DESCRIPTION, sarFile.getDescription());

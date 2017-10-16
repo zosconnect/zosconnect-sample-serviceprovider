@@ -28,14 +28,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.osgi.service.component.ComponentContext;
 
 import com.ibm.json.java.JSONObject;
-import com.ibm.zosconnect.spi.DataXform;
 import com.ibm.zosconnect.spi.HttpZosConnectRequest;
-import com.ibm.zosconnect.spi.Interceptor;
 import com.ibm.zosconnect.spi.RequestData;
 import com.ibm.zosconnect.spi.ResponseData;
 import com.ibm.zosconnect.spi.Service;
 import com.ibm.zosconnect.spi.ServiceArchiveData;
-import com.ibm.zosconnect.spi.ServiceController;
 import com.ibm.zosconnect.spi.ServiceException;
 import com.ibm.zosconnect.spi.ServiceStatus;
 
