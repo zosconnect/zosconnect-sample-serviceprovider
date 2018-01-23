@@ -1,1 +1,3 @@
 *.esa
+*/.idea/
+*/target/
