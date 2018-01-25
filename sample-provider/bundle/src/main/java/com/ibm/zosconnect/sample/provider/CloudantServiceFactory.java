@@ -5,16 +5,17 @@ import com.ibm.zosconnect.spi.ServiceFactory;
 import com.ibm.zosconnect.spi.ServiceFactoryException;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.*;
 
+import java.util.HashMap;
 import java.util.Properties;
 
 @Component(name = "com.ibm.zosconnect.sample.cloudant", configurationPolicy = ConfigurationPolicy.IGNORE, property = {"service.provider=IBM"}, service = {ServiceFactory.class})
 public class CloudantServiceFactory implements ServiceFactory {
 
     private BundleContext context;
+
+    private HashMap<String, CloudantConnection> connections = new HashMap<String, CloudantConnection>();
 
     @Activate
     protected void activate(ComponentContext cc){
@@ -34,6 +35,15 @@ public class CloudantServiceFactory implements ServiceFactory {
     }
 
     public void deregisterService(SarFile sarFile) {
+
+    }
+
+    @Reference(name = "connection", service = CloudantConnection.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+    public void addCloudantConnection(CloudantConnection cc){
+
+    }
+
+    public void removeCloudantConnection(CloudantConnection cc){
 
     }
 }
