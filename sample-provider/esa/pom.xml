@@ -27,7 +27,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <archiveContent>all</archiveContent>
-                    <generateManifest>true</generateManifest>
+                    <subsystemManifestFile>${basedir}/src/main/resources/OSGI-INF/SUBSYSTEM.MF</subsystemManifestFile>
                 </configuration>
             </plugin>
         </plugins>
