@@ -20,6 +20,7 @@ public class CloudantServiceFactory implements ServiceFactory {
     @Activate
     protected void activate(ComponentContext cc){
         context = cc.getBundleContext();
+        System.out.println("Activated ServiceFactory");
     }
 
     public String getProvider() {

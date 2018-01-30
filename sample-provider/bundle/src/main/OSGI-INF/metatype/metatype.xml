@@ -6,7 +6,7 @@
     </OCD>
 
     <Designate factoryPid="com.ibm.zosconnect.sample.provider.connection">
-        <Object ocdRef="com.ibm.zosconnect.sample.provider.connection.metatype"/>
+        <Object ocdref="com.ibm.zosconnect.sample.provider.connection.metatype"/>
     </Designate>
 
 </metatype:MetaData>
