@@ -41,10 +41,12 @@ public class CloudantServiceFactory implements ServiceFactory {
 
     @Reference(name = "connection", service = CloudantConnection.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
     public void addCloudantConnection(CloudantConnection cc){
-
+        //Store the connection in the collection of those in the configuration
+        connections.put(cc.getId(), cc);
     }
 
     public void removeCloudantConnection(CloudantConnection cc){
-
+        //Remove the connection
+        connections.remove(cc.getId());
     }
 }
