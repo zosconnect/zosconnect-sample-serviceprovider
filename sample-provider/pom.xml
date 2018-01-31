@@ -4,10 +4,10 @@
     <groupId>com.ibm.zosconnect.sample.provider</groupId>
     <artifactId>sample-provider</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>sample-provider</name>
     <modules>
-        <module>bundle</module>
-        <module>esa</module>
+        <module>com.ibm.zosconnect.sample.provider</module>
+        <module>com.ibm.zosconnect.sample.provider.feature</module>
     </modules>
 </project>

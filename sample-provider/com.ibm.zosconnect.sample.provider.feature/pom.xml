@@ -3,13 +3,13 @@
     <parent>
         <groupId>com.ibm.zosconnect.sample.provider</groupId>
         <artifactId>sample-provider</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ibm.zosconnect.sample.provider</groupId>
-    <artifactId>esa</artifactId>
+    <artifactId>com.ibm.zosconnect.sample.provider.feature</artifactId>
     <packaging>esa</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>esa</name>
     <dependencies>
         <dependency>
