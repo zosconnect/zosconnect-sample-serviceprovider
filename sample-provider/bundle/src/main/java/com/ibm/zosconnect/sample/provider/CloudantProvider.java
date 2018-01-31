@@ -11,7 +11,7 @@ public class CloudantProvider implements ServiceController {
     private ServiceStatus status = new ServiceStatus();
 
     public CloudantProvider() {
-        status.setStatus(ServiceStatus.STOPPED);
+        status.setStatus(ServiceStatus.STARTED);
 
     }
 
@@ -44,7 +44,7 @@ public class CloudantProvider implements ServiceController {
     }
 
     public ServiceStatus status() throws ServiceException {
-        return null;
+        return status;
     }
 
     public void invoke(Map<Object, Object> map, HttpZosConnectRequest httpZosConnectRequest, RequestData requestData, ResponseData responseData) throws ServiceException {
@@ -52,11 +52,13 @@ public class CloudantProvider implements ServiceController {
     }
 
     public ServiceStatus stop() throws ServiceException {
-        return null;
+        status.setStatus(ServiceStatus.STOPPED);
+        return status;
     }
 
     public ServiceStatus start() throws ServiceException {
-        return null;
+        status.setStatus(ServiceStatus.STARTED);
+        return status;
     }
 
     public List<ServiceArchiveData> getServiceArchiveData() throws ServiceException {
