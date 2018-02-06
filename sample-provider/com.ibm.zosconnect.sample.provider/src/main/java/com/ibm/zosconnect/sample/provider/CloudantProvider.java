@@ -9,10 +9,11 @@ import java.util.Map;
 public class CloudantProvider implements ServiceController {
 
     private ServiceStatus status = new ServiceStatus();
+    private CloudantConnection connection;
 
-    public CloudantProvider() {
+    public CloudantProvider(CloudantConnection connection) {
         status.setStatus(ServiceStatus.STARTED);
-
+        this.connection = connection;
     }
 
     public Interceptor[] getInterceptors() {
@@ -63,5 +64,9 @@ public class CloudantProvider implements ServiceController {
 
     public List<ServiceArchiveData> getServiceArchiveData() throws ServiceException {
         return null;
+    }
+
+    public void setConnection(CloudantConnection cc){
+        this.connection = cc;
     }
 }
