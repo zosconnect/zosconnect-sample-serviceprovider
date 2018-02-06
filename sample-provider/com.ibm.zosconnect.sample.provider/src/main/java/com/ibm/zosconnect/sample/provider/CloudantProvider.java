@@ -8,12 +8,19 @@ import java.util.Map;
 
 public class CloudantProvider implements ServiceController {
 
+    //Store the current status of this service.
     private ServiceStatus status = new ServiceStatus();
+    //The connection to the Cloudant database that this service uses.
     private CloudantConnection connection;
 
-    public CloudantProvider(CloudantConnection connection) {
+    private JSONObject requestSchema;
+    private JSONObject responseSchema;
+
+    public CloudantProvider(CloudantConnection connection, JSONObject requestSchema, JSONObject responseSchema) {
         status.setStatus(ServiceStatus.STARTED);
         this.connection = connection;
+        this.requestSchema = requestSchema;
+        this.responseSchema = responseSchema;
     }
 
     public Interceptor[] getInterceptors() {
@@ -33,11 +40,11 @@ public class CloudantProvider implements ServiceController {
     }
 
     public JSONObject getRequestSchema() throws ServiceException {
-        return null;
+        return requestSchema;
     }
 
     public JSONObject getResponseSchema() throws ServiceException {
-        return null;
+        return responseSchema;
     }
 
     public JSONObject getStatistics() throws ServiceException {
