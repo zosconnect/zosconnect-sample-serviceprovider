@@ -24,10 +24,12 @@ public class CloudantProvider implements ServiceController {
     }
 
     public Interceptor[] getInterceptors() {
+        //Interceptors are defined in server.xml so there is no need to specify any here.
         return new Interceptor[0];
     }
 
     public DataXform getDataXform() {
+        //If a DataXform implementation is used then the instance for this service is returned here.
         return null;
     }
 
@@ -40,10 +42,12 @@ public class CloudantProvider implements ServiceController {
     }
 
     public JSONObject getRequestSchema() throws ServiceException {
+        //Return the request schema for this service.
         return requestSchema;
     }
 
     public JSONObject getResponseSchema() throws ServiceException {
+        //Return the response schema for this service.
         return responseSchema;
     }
 
@@ -52,6 +56,7 @@ public class CloudantProvider implements ServiceController {
     }
 
     public ServiceStatus status() throws ServiceException {
+        //Return the current status of the service.
         return status;
     }
 
@@ -60,11 +65,13 @@ public class CloudantProvider implements ServiceController {
     }
 
     public ServiceStatus stop() throws ServiceException {
+        //Set the status to stopped and return the updated status.
         status.setStatus(ServiceStatus.STOPPED);
         return status;
     }
 
     public ServiceStatus start() throws ServiceException {
+        //Set the status to started and return the updated status.
         status.setStatus(ServiceStatus.STARTED);
         return status;
     }

@@ -1,13 +1,15 @@
 package com.ibm.zosconnect.sample.provider;
 
-import com.ibm.zosconnect.spi.SarFile;
-import com.ibm.zosconnect.spi.ServiceFactory;
-import com.ibm.zosconnect.spi.ServiceFactoryException;
+import com.ibm.json.java.JSONObject;
+import com.ibm.zosconnect.spi.*;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.*;
 
+import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Properties;
 
 @Component(name = "com.ibm.zosconnect.sample.cloudant", configurationPolicy = ConfigurationPolicy.IGNORE, property = {"service.provider=IBM"}, service = {ServiceFactory.class})
@@ -15,7 +17,10 @@ public class CloudantServiceFactory implements ServiceFactory {
 
     private BundleContext context;
 
-    private HashMap<String, CloudantConnection> connections = new HashMap<String, CloudantConnection>();
+    //List of connections defined in server.xml
+    private HashMap<String, CloudantConnection> connections = new HashMap<>();
+
+    private HashMap<String, ServiceRegistration<ServiceController>> installedServices = new HashMap<>();
 
     @Activate
     protected void activate(ComponentContext cc){
@@ -28,7 +33,21 @@ public class CloudantServiceFactory implements ServiceFactory {
     }
 
     public void registerService(SarFile sarFile, Properties properties) throws ServiceFactoryException {
+        //Get the configuration from the SAR that the service needs to know
+        JSONObject requestSchema = sarFile.getRequestSchema();
+        JSONObject responseSchema = sarFile.getResponseSchema();
+        String connectionRef = sarFile.getProperty("ref").toString();
 
+        //Create an instance of the service for this SAR file
+        CloudantProvider cp = new CloudantProvider(connections.get(connectionRef), requestSchema, responseSchema);
+
+        //Get the configuration required when registering the service with OSGi
+        Dictionary<String, Object> config = new Hashtable<>();
+        config.put(ServiceControllerConstants.SERVICE_NAME, sarFile.getName());
+        config.put(ServiceControllerConstants.SERVICE_DESCRIPTION, sarFile.getDescription());
+
+        //Install the service and store in our cache
+        installedServices.put(sarFile.getName(), context.registerService(ServiceController.class, cp, config));
     }
 
     public void updateService(SarFile sarFile, Properties properties) throws ServiceFactoryException {
@@ -36,7 +55,8 @@ public class CloudantServiceFactory implements ServiceFactory {
     }
 
     public void deregisterService(SarFile sarFile) {
-
+        installedServices.get(sarFile.getName()).unregister();
+        installedServices.remove(sarFile.getName());
     }
 
     @Reference(name = "connection", service = CloudantConnection.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
