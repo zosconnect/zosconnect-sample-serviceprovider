@@ -12,15 +12,18 @@ public class CloudantProvider implements ServiceController {
     private ServiceStatus status = new ServiceStatus();
     //The connection to the Cloudant database that this service uses.
     private CloudantConnection connection;
+    //Database name
+    private String databaseName;
 
     private JSONObject requestSchema;
     private JSONObject responseSchema;
 
-    public CloudantProvider(CloudantConnection connection, JSONObject requestSchema, JSONObject responseSchema) {
+    public CloudantProvider(CloudantConnection connection, JSONObject requestSchema, JSONObject responseSchema, String databaseName) {
         status.setStatus(ServiceStatus.STARTED);
         this.connection = connection;
         this.requestSchema = requestSchema;
         this.responseSchema = responseSchema;
+        this.databaseName = databaseName;
     }
 
     public Interceptor[] getInterceptors() {

@@ -37,9 +37,10 @@ public class CloudantServiceFactory implements ServiceFactory {
         JSONObject requestSchema = sarFile.getRequestSchema();
         JSONObject responseSchema = sarFile.getResponseSchema();
         String connectionRef = sarFile.getProperty("ref").toString();
+        String databaseName = sarFile.getProperty("databaseName").toString();
 
         //Create an instance of the service for this SAR file
-        CloudantProvider cp = new CloudantProvider(connections.get(connectionRef), requestSchema, responseSchema);
+        CloudantProvider cp = new CloudantProvider(connections.get(connectionRef), requestSchema, responseSchema, databaseName);
 
         //Get the configuration required when registering the service with OSGi
         Dictionary<String, Object> config = new Hashtable<>();
