@@ -1,8 +1,9 @@
 <metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.1.0"
                    xmlns:ibm="http://www.ibm.com/xmlns/appservers/osgi/metatype/v1.0.0">
     <OCD id="com.ibm.zosconnect.sample.provider.connection.metatype" ibm:alias="cloudantConnection" name="cloudantConnection" description="Connection details for cloudant database">
-        <AD id="host" required="true" type="String" name="Host name" description="The hostname of the cloudant server"/>
-        <AD id="port" required="true" type="Integer" name="Port" description="The port of the cloudant server"/>
+        <AD id="url" required="true" type="String" name="URL" description="The url of the cloudant database"/>
+        <AD id="user" required="true" type="String" name="User Name" description="The user name required to access the cloudant database"/>
+        <AD id="password" required="true" type="Password" name="String" ibm:type="password" description="The password required to access the cloudant database"/>
     </OCD>
 
     <Designate factoryPid="com.ibm.zosconnect.sample.provider.connection">
