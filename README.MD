@@ -79,15 +79,15 @@ Return the provider name. This will match the name returned from the `ServiceFac
 
 ##### getRequestSchema
 
-Return the JSON schema that describes the structure of requests to this service.
+Return the JSON schema that describes the structure of requests to this service. This will be returned to any user that makes a REST call to retrieve the request schema for this service.
 
 ##### getResponseSchema
 
-Return the JSON schema that describes the structure of responses from this service.
+Return the JSON schema that describes the structure of responses from this service. This will be returned to any user that makes a REST call to retireve the response schema for this service.
 
 ##### status
 
-Returns the current status of this service.
+Return the current status of this service. This will be included in the information returned to the user about the service.
 
 ##### start
 
@@ -100,3 +100,5 @@ Change the service status to `Stopped` along with any other processing that is r
 ##### invoke
 
 ##### getStatistics
+
+This method allows the service to report any statistics back through the z/OS Connect administration API. The information and the format used is left to the Service Provider implementer to determine what is appropriate based on the implementation. This method is optional and so can be left to return null if required.
