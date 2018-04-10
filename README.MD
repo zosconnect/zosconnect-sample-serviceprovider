@@ -99,6 +99,12 @@ Change the service status to `Stopped` along with any other processing that is r
 
 ##### invoke
 
+Takes the input from the client or the API, calls the system of record and then returns the response JSON object.
+
+Dealing with errors
+
+Transforming data
+
 ##### getStatistics
 
 This method allows the service to report any statistics back through the z/OS Connect administration API. The information and the format used is left to the Service Provider implementer to determine what is appropriate based on the implementation. This method is optional and so can be left to return null if required.
