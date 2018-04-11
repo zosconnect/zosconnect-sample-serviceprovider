@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ibm.zosconnect.sample.provider</groupId>
-    <artifactId>com.ibm.zosconnect.sample.provider</artifactId>
+    <artifactId>bundle</artifactId>
     <packaging>bundle</packaging>
     <version>1.0</version>
     <name>bundle</name>
