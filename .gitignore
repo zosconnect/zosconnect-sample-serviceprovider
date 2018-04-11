@@ -1,3 +1,7 @@
 *.esa
 **/.idea/
 **/target/
+**/.settings/
+.classpath
+.project
+.vscode/
