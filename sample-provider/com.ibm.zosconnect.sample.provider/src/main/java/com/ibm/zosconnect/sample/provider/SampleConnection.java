@@ -1,23 +1,21 @@
 package com.ibm.zosconnect.sample.provider;
 
-import com.cloudant.client.api.ClientBuilder;
-import com.cloudant.client.api.CloudantClient;
-import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.*;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 
-@Component(configurationPid = "com.ibm.zosconnect.sample.provider.connection", service = CloudantConnection.class, configurationPolicy = ConfigurationPolicy.REQUIRE)
-public class CloudantConnection {
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Modified;
+
+@Component(configurationPid = "com.ibm.zosconnect.sample.provider.connection", service = SampleConnection.class, configurationPolicy = ConfigurationPolicy.REQUIRE)
+public class SampleConnection {
 
     private String id;
     private String url;
     private String userId;
     private String password;
-
-    private CloudantClient client;
 
     @Activate
     public void activate(ComponentContext cc, Map<String, Object> properties) {
@@ -40,19 +38,22 @@ public class CloudantConnection {
             url = (String) properties.get("url");
             userId = (String) properties.get("userId");
             password = (String) properties.get("password");
-
-            try {
-                client = ClientBuilder.url(new URL(url)).username(userId).password(password).build();
-            } catch (MalformedURLException e) {
-            }
         }
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public CloudantClient getClient() {
-        return client;
+    public String getUrl() {
+        return url;
+    }
+
+    public String userId() {
+        return userId;
+    }
+
+    public String password() {
+        return password;
     }
 }

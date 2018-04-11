@@ -6,24 +6,24 @@ import com.ibm.zosconnect.spi.*;
 import java.util.List;
 import java.util.Map;
 
-public class CloudantProvider implements ServiceController {
+public class SampleProvider implements ServiceController {
 
     //Store the current status of this service.
     private ServiceStatus status = new ServiceStatus();
     //The connection to the Cloudant database that this service uses.
-    private CloudantConnection connection;
+    private SampleConnection connection;
     //Database name
-    private String databaseName;
+    private String configName;
 
     private JSONObject requestSchema;
     private JSONObject responseSchema;
 
-    public CloudantProvider(CloudantConnection connection, JSONObject requestSchema, JSONObject responseSchema, String databaseName) {
+    public SampleProvider(SampleConnection connection, JSONObject requestSchema, JSONObject responseSchema, String configName) {
         status.setStatus(ServiceStatus.STARTED);
         this.connection = connection;
         this.requestSchema = requestSchema;
         this.responseSchema = responseSchema;
-        this.databaseName = databaseName;
+        this.configName = configName;
     }
 
     public Interceptor[] getInterceptors() {
@@ -37,7 +37,7 @@ public class CloudantProvider implements ServiceController {
     }
 
     public String getProviderName() {
-        return "cloudant-1.0";
+        return "sample-1.0";
     }
 
     public Map<String, Object> getData() throws ServiceException {
@@ -83,7 +83,7 @@ public class CloudantProvider implements ServiceController {
         return null;
     }
 
-    public void setConnection(CloudantConnection cc){
+    public void setConnection(SampleConnection cc){
         this.connection = cc;
     }
 }

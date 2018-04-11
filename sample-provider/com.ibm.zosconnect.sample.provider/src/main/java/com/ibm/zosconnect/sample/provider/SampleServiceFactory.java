@@ -13,12 +13,12 @@ import java.util.Hashtable;
 import java.util.Properties;
 
 @Component(name = "com.ibm.zosconnect.sample.cloudant", configurationPolicy = ConfigurationPolicy.IGNORE, property = {"service.provider=IBM"}, service = {ServiceFactory.class})
-public class CloudantServiceFactory implements ServiceFactory {
+public class SampleServiceFactory implements ServiceFactory {
 
     private BundleContext context;
 
     //List of connections defined in server.xml
-    private HashMap<String, CloudantConnection> connections = new HashMap<>();
+    private HashMap<String, SampleConnection> connections = new HashMap<>();
 
     private HashMap<String, ServiceRegistration<ServiceController>> installedServices = new HashMap<>();
 
@@ -29,7 +29,7 @@ public class CloudantServiceFactory implements ServiceFactory {
     }
 
     public String getProvider() {
-        return "cloudant-1.0";
+        return "sample-1.0";
     }
 
     public void registerService(SarFile sarFile, Properties properties) throws ServiceFactoryException {
@@ -40,7 +40,7 @@ public class CloudantServiceFactory implements ServiceFactory {
         String databaseName = sarFile.getProperty("databaseName").toString();
 
         //Create an instance of the service for this SAR file
-        CloudantProvider cp = new CloudantProvider(connections.get(connectionRef), requestSchema, responseSchema, databaseName);
+        SampleProvider cp = new SampleProvider(connections.get(connectionRef), requestSchema, responseSchema, databaseName);
 
         //Get the configuration required when registering the service with OSGi
         Dictionary<String, Object> config = new Hashtable<>();
@@ -60,13 +60,13 @@ public class CloudantServiceFactory implements ServiceFactory {
         installedServices.remove(sarFile.getName());
     }
 
-    @Reference(name = "connection", service = CloudantConnection.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
-    public void addCloudantConnection(CloudantConnection cc){
+    @Reference(name = "connection", service = SampleConnection.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+    public void addCloudantConnection(SampleConnection cc){
         //Store the connection in the collection of those in the configuration
         connections.put(cc.getId(), cc);
     }
 
-    public void removeCloudantConnection(CloudantConnection cc){
+    public void removeCloudantConnection(SampleConnection cc){
         //Remove the connection
         connections.remove(cc.getId());
     }
