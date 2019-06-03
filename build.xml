@@ -22,10 +22,10 @@
                     <include name="com.ibm.websphere.appserver.api.json*.jar"/>
                 </fileset>
                 <fileset dir="${libertyDir}/dev/api/spec/">
-                    <include name="com.ibm.ws.org.osgi.core.*.jar"/>
-                    <include name="com.ibm.ws.org.osgi.service.component.*.jar"/>
+                    <include name="com.ibm.websphere.org.osgi.core*.jar"/>
+                    <include name="com.ibm.websphere.org.osgi.service.component*.jar"/>
                 </fileset>
-                <pathelement path="${spiDir}/com.ibm.zosconnect.spi_2.0.0.0.jar"/>
+                <pathelement path="${spiDir}/com.ibm.zosconnect.spi.jar"/>
             </classpath>
         </javac>
 

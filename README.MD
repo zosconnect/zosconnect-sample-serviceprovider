@@ -7,12 +7,13 @@ service provider and include it as part of a z/OS Connect EE configuration.
 
 * [WebSphere Liberty](http://wasdev.net) installed locally
 * The z/OS Connect EE SPI JAR file downloaded from a z/OS Connect EE install.
+* [Apache Ant](https://ant.apache.org/) installed on development platform
 
 ### Installing
 
 * Clone this repository `git clone git://github.com/zosconnect/zosconnect-sample-provider.git`
 * Update `build.xml` to point to the location of your Liberty install and the SPI jar.
-* Build the feature `ant build.xml`
+* Build the feature `ant build_feature`
 * Transfer the esa file to the mainframe. If using `ftp` ensure the file is transferred as binary.
 * Install the feature into your z/OS Connect EE environment `wlp/bin/installUtility install com.ibm.zosconnect.sample.provider.feature-1.0.0.0.esa --to=usr`
    * If using the default location for z/OS Connect EE servers then set the environment variable `WLP_USER_DIR=/var/zosconnect`
